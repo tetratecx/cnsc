@@ -1,0 +1,19 @@
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: OrganizationAccessBindings
+metadata:
+  name: tetrate
+  organization: tetrate
+spec:
+  allow:
+  - role: rbac/admin
+    subjects:
+    - serviceAccount: teamsync-job
+    - user: organizations/tetrate/users/b35c56e9-29cb-408d-85b3-87be9d791090
+  - role: rbac/cluster-reader
+    subjects:
+    - user: organizations/tetrate/users/aa9c3462-fd4d-4e27-9bc7-717ef8ee3c16
+    - user: organizations/tetrate/users/bc51a58d-eaa8-486c-8bd8-3e048e3ce0cf
+    - user: organizations/tetrate/users/32933140-92ed-48e0-b87e-a1a5546b7887
+    - user: organizations/tetrate/users/ffdae67c-c0b7-474d-a6fd-2acf5ecbb439
+    - team: organizations/tetrate/teams/2d0ccfbc-f1ef-4aeb-bdc4-e0cfee754bd1
+

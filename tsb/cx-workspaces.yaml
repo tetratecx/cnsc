@@ -1,0 +1,42 @@
+apiVersion: api.tsb.tetrate.io/v2
+kind: Workspace
+metadata:
+  description: Ticketing Dev Env
+  displayName: Ticketing Dev Env
+  name: ticketing-dev
+  organization: tetrate
+  resourceVersion: '"ShhKoo2HPUc="'
+  tenant: cx
+spec:
+  description: Ticketing Dev Env
+  displayName: Ticketing Dev Env
+  etag: '"ShhKoo2HPUc="'
+  fqn: organizations/tetrate/tenants/cx/workspaces/ticketing-dev
+  isolationBoundary: demo
+  namespaceSelector:
+    names:
+    - gke-west/ticketing-dev
+  privileged: false
+
+---
+apiVersion: api.tsb.tetrate.io/v2
+kind: Workspace
+metadata:
+  description: Ticketing Prod Env
+  displayName: Ticketing Prod Env
+  name: ticketing-prod
+  organization: tetrate
+  resourceVersion: '"sCAh9LVOcHw="'
+  tenant: cx
+spec:
+  description: Ticketing Prod Env
+  displayName: Ticketing Prod Env
+  etag: '"sCAh9LVOcHw="'
+  fqn: organizations/tetrate/tenants/cx/workspaces/ticketing-prod
+  isolationBoundary: demo
+  namespaceSelector:
+    names:
+    - gke-east/ticketing
+    - gke-west/ticketing
+  privileged: false
+

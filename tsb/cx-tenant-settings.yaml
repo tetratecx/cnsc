@@ -1,0 +1,28 @@
+apiVersion: api.tsb.tetrate.io/v2
+kind: TenantSetting
+metadata:
+  displayName: default-setting
+  name: default-tenant-setting
+  organization: tetrate
+  resourceVersion: '"6SiWXwwaSM0="'
+  tenant: cx
+spec:
+  defaultSecuritySetting:
+    authenticationSettings:
+      trafficMode: REQUIRED
+    authorization: {}
+    displayName: default-setting
+    propagationStrategy: STRICTER
+  defaultTrafficSetting:
+    displayName: default-setting
+    resilience:
+      circuitBreakerSensitivity: HIGH
+      httpRequestTimeout: 3s
+      httpRetries:
+        attempts: 3
+        perTryTimeout: 2s
+        retryOn: 5xx,retriable-status-codes,gateway-error,reset
+  displayName: default-setting
+  etag: '"6SiWXwwaSM0="'
+  fqn: organizations/tetrate/tenants/cx/settings/default-tenant-setting
+

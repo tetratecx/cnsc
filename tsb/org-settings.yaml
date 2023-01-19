@@ -1,0 +1,16 @@
+apiVersion: api.tsb.tetrate.io/v2
+kind: OrganizationSetting
+metadata:
+  displayName: tetrate-settings
+  name: tetrate-settings
+  organization: tetrate
+  resourceVersion: '"KxV4nl43+0M="'
+spec:
+  defaultSecuritySetting:
+    authenticationSettings:
+      trafficMode: REQUIRED
+  displayName: tetrate-settings
+  etag: '"KxV4nl43+0M="'
+  fqn: organizations/tetrate/settings/tetrate-settings
+  networkSettings: {}
+

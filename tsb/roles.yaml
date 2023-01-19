@@ -1,0 +1,394 @@
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: security-arch
+  displayName: security-arch
+  name: security-arch
+spec:
+  description: security-arch
+  displayName: security-arch
+  fqn: rbac/security-arch
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+    - CREATE
+    - DELETE
+    - SET_POLICY
+    types:
+    - apiGroup: api.tsb.tetrate.io/v2
+      kinds:
+      - OrganizationSetting
+      - Tenant
+      - TenantSetting
+      - Workspace
+      - WorkspaceSetting
+    - apiGroup: gateway.tsb.tetrate.io/v2
+      kinds:
+      - EgressGateway
+    - apiGroup: networking.istio.io/v1alpha3
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: networking.istio.io/v1beta1
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: security.istio.io/v1beta1
+      kinds:
+      - AuthorizationPolicy
+      - PeerAuthentication
+      - RequestAuthentication
+    - apiGroup: security.tsb.tetrate.io/v2
+      kinds:
+      - Group
+      - SecuritySetting
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: workspace-dev
+  displayName: workspace-dev
+  name: workspace-dev
+spec:
+  description: workspace-dev
+  displayName: workspace-dev
+  fqn: rbac/workspace-dev
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+    - CREATE
+    - DELETE
+    - SET_POLICY
+    types:
+    - apiGroup: api.tsb.tetrate.io/v2
+      kinds:
+      - Workspace
+      - WorkspaceSetting
+    - apiGroup: gateway.tsb.tetrate.io/v2
+      kinds:
+      - EgressGateway
+      - Group
+      - IngressGateway
+      - Tier1Gateway
+    - apiGroup: networking.istio.io/v1alpha3
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: networking.istio.io/v1beta1
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: traffic.tsb.tetrate.io/v2
+      kinds:
+      - Group
+      - ServiceRoute
+      - TrafficSetting
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: workspace-security
+  displayName: workspace-security
+  name: workspace-security
+spec:
+  description: workspace-security
+  displayName: workspace-security
+  fqn: rbac/workspace-security
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+    - CREATE
+    - DELETE
+    - SET_POLICY
+    types:
+    - apiGroup: gateway.tsb.tetrate.io/v2
+      kinds:
+      - EgressGateway
+    - apiGroup: networking.istio.io/v1alpha3
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: networking.istio.io/v1beta1
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: security.istio.io/v1beta1
+      kinds:
+      - AuthorizationPolicy
+      - PeerAuthentication
+      - RequestAuthentication
+    - apiGroup: security.tsb.tetrate.io/v2
+      kinds:
+      - Group
+      - SecuritySetting
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: tenant-reader
+  displayName: tenant-reader
+  name: tenant-reader
+spec:
+  description: tenant-reader
+  displayName: tenant-reader
+  fqn: rbac/tenant-reader
+  rules:
+  - permissions:
+    - READ
+    types:
+    - apiGroup: api.tsb.tetrate.io/v2
+      kinds:
+      - Organization
+      - OrganizationSetting
+      - Team
+      - Tenant
+      - TenantSetting
+      - User
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Edit permissions (Read, Write, Create) across all resources
+  displayName: Editor
+  name: editor
+spec:
+  description: Edit permissions (Read, Write, Create) across all resources
+  displayName: Editor
+  fqn: rbac/editor
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+    - CREATE
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Provides Read access to target resources and allows Creating child
+    ones
+  displayName: Creator
+  name: creator
+spec:
+  description: Provides Read access to target resources and allows Creating child
+    ones
+  displayName: Creator
+  fqn: rbac/creator
+  rules:
+  - permissions:
+    - READ
+    - CREATE
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Create and Write permissions on tenants, users and teams
+  displayName: OrgSync
+  name: orgsync
+spec:
+  description: Create and Write permissions on tenants, users and teams
+  displayName: OrgSync
+  fqn: rbac/orgsync
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+    - CREATE
+    - DELETE
+    types:
+    - apiGroup: api.tsb.tetrate.io/v2
+      kinds:
+      - Organization
+      - Team
+      - Tenant
+      - User
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Read permissions to registered services
+  displayName: RegistryReader
+  name: registryreader
+spec:
+  description: Read permissions to registered services
+  displayName: RegistryReader
+  fqn: rbac/registryreader
+  rules:
+  - permissions:
+    - READ
+    types:
+    - apiGroup: registry.tsb.tetrate.io/v2
+      kinds:
+      - Service
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Create and Write permissions on registry services
+  displayName: RegistryAdmin
+  name: registryadmin
+spec:
+  description: Create and Write permissions on registry services
+  displayName: RegistryAdmin
+  fqn: rbac/registryadmin
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+    - CREATE
+    - DELETE
+    types:
+    - apiGroup: registry.tsb.tetrate.io/v2
+      kinds:
+      - Service
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: cluster-reader
+  displayName: cluster-reader
+  name: cluster-reader
+spec:
+  description: cluster-reader
+  displayName: cluster-reader
+  fqn: rbac/cluster-reader
+  rules:
+  - permissions:
+    - READ
+    types:
+    - apiGroup: api.tsb.tetrate.io/v2
+      kinds:
+      - Cluster
+    - apiGroup: registry.tsb.tetrate.io/v2
+      kinds:
+      - Service
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: workspace-reader
+  displayName: workspace-reader
+  name: workspace-reader
+spec:
+  description: workspace-reader
+  displayName: workspace-reader
+  fqn: rbac/workspace-reader
+  rules:
+  - permissions:
+    - READ
+    types:
+    - apiGroup: api.tsb.tetrate.io/v2
+      kinds:
+      - Workspace
+      - WorkspaceSetting
+    - apiGroup: application.tsb.tetrate.io/v2
+      kinds:
+      - API
+      - Application
+    - apiGroup: gateway.tsb.tetrate.io/v2
+      kinds:
+      - EgressGateway
+      - Group
+      - IngressGateway
+      - Tier1Gateway
+    - apiGroup: networking.istio.io/v1alpha3
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: networking.istio.io/v1beta1
+      kinds:
+      - DestinationRule
+      - Gateway
+      - Sidecar
+      - VirtualService
+    - apiGroup: security.istio.io/v1beta1
+      kinds:
+      - AuthorizationPolicy
+      - PeerAuthentication
+      - RequestAuthentication
+    - apiGroup: security.tsb.tetrate.io/v2
+      kinds:
+      - Group
+      - SecuritySetting
+    - apiGroup: traffic.tsb.tetrate.io/v2
+      kinds:
+      - Group
+      - ServiceRoute
+      - TrafficSetting
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Admin (all) permissions across all resources
+  displayName: Admin
+  name: admin
+spec:
+  description: Admin (all) permissions across all resources
+  displayName: Admin
+  fqn: rbac/admin
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+    - CREATE
+    - DELETE
+    - SET_POLICY
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Read and Write permissions across all TSB Resources
+  displayName: Writer
+  name: writer
+spec:
+  description: Read and Write permissions across all TSB Resources
+  displayName: Writer
+  fqn: rbac/writer
+  rules:
+  - permissions:
+    - READ
+    - WRITE
+
+---
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: Role
+metadata:
+  description: Read permissions across all TSB Resources
+  displayName: Reader
+  name: reader
+spec:
+  description: Read permissions across all TSB Resources
+  displayName: Reader
+  fqn: rbac/reader
+  rules:
+  - permissions:
+    - READ
+

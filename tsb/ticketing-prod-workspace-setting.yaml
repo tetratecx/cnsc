@@ -1,0 +1,26 @@
+apiVersion: api.tsb.tetrate.io/v2
+kind: WorkspaceSetting
+metadata:
+  displayName: default-setting
+  name: default-setting
+  organization: tetrate
+  resourceVersion: '"FCPkp7l3424="'
+  tenant: cx
+  workspace: ticketing-prod
+spec:
+  defaultSecuritySetting:
+    displayName: default-setting
+    propagationStrategy: STRICTER
+  defaultTrafficSetting:
+    displayName: default-setting
+    resilience:
+      circuitBreakerSensitivity: HIGH
+      httpRequestTimeout: 2s
+      httpRetries:
+        attempts: 20
+        perTryTimeout: 0.200s
+        retryOn: 5xx,gateway-error,retriable-status-codes
+  displayName: default-setting
+  etag: '"FCPkp7l3424="'
+  fqn: organizations/tetrate/tenants/cx/workspaces/ticketing-prod/settings/default-setting
+

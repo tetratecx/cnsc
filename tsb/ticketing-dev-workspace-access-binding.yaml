@@ -1,0 +1,16 @@
+apiVersion: rbac.tsb.tetrate.io/v2
+kind: WorkspaceAccessBindings
+metadata:
+  name: ticketing-dev
+  organization: tetrate
+  tenant: cx
+  workspace: ticketing-dev
+spec:
+  allow:
+  - role: rbac/admin
+    subjects:
+    - serviceAccount: admin
+  - role: rbac/workspace-dev
+    subjects:
+    - user: organizations/tetrate/users/ffdae67c-c0b7-474d-a6fd-2acf5ecbb439
+
