@@ -1,0 +1,12 @@
+---
+apiVersion: install.tetrate.io/v1alpha1
+kind: IngressGateway
+metadata:
+  name: gateway
+  namespace: ticketing
+spec:
+  revision: 1-6-0
+  kubeSpec:
+    service:
+      type: LoadBalancer
+  

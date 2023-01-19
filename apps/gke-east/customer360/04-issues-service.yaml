@@ -1,0 +1,154 @@
+##################
+## Issues Service
+##################
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: issues-service
+  namespace: customer360
+  labels:
+    app: issues-service
+    service: issues-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8000
+      name: http
+    - port: 3000
+      targetPort: 3000
+      name: tcp
+  selector:
+    app: issues-service
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: issues-service
+  namespace: customer360
+  labels:
+    app: issues-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: issues-service-v1
+  namespace: customer360
+  labels:
+    app: issues-service
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: issues-service
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: issues-service
+        version: v1
+    spec:
+      serviceAccountName: issues-service
+      containers:
+        - name: obs-tester
+          image: gcr.io/abz-perm/obs-tester-server:v2.0
+          imagePullPolicy: Always
+          args:
+            - '--log-output-level=all:debug'
+            - '--http-listen-address=:8000' # address the http server in the container listens on
+            - '--tcp-listen-address=:3000' # address the tcp server in the container listens on
+            - '--ep-duration=750ms' # the default latency used for handling requests to / (echo handler)
+            - '--ep-errors=10' # the default percentage of errors injected when handling echo requests
+            - '--ep-headers=0' # the default percentage of double headers injected when handling echo requests
+            - '--zipkin-reporter-endpoint=http://zipkin.istio-system.svc.cluster.local:9411/api/v2/spans'
+            - '--zipkin-sample-rate=1.0' # When we originate client request, this is the sample rate we use.
+            - '--zipkin-singlehost-spans' # Envoy does not work well with Zipkin's default shared spans
+          env:
+            - name: SVCNAME
+              value: issues-service
+            - name: COLOR
+              value: blue
+            - name: ENDPOINT_PATH
+              value: /p/http/accounts-service/p/http/issues-service/p/http/issues-backend
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: SIDECAR_STATUS
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.annotations['sidecar.istio.io/status']
+          ports:
+            - name: http
+              containerPort: 8000
+            - name: tcp
+              containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: issues-service-v2
+  namespace: customer360
+  labels:
+    app: issues-service
+    version: v2
+spec:
+  selector:
+    matchLabels:
+      app: issues-service
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: issues-service
+        version: v2
+    spec:
+      serviceAccountName: issues-service
+      containers:
+        - name: obs-tester
+          image: gcr.io/abz-perm/obs-tester-server:v2.0
+          imagePullPolicy: Always
+          args:
+            - '--log-output-level=all:debug'
+            - '--http-listen-address=:8000' # address the http server in the container listens on
+            - '--tcp-listen-address=:3000' # address the tcp server in the container listens on
+            - '--ep-duration=100ms' # the default latency used for handling requests to / (echo handler)
+            - '--ep-errors=2' # the default percentage of errors injected when handling echo requests
+            - '--ep-headers=0' # the default percentage of double headers injected when handling echo requests
+            - '--zipkin-reporter-endpoint=http://zipkin.istio-system.svc.cluster.local:9411/api/v2/spans'
+            - '--zipkin-sample-rate=1.0' # When we originate client request, this is the sample rate we use.
+            - '--zipkin-singlehost-spans' # Envoy does not work well with Zipkin's default shared spans
+          env:
+            - name: SVCNAME
+              value: issues-service
+            - name: COLOR
+              value: blue
+            - name: ENDPOINT_PATH
+              value: /p/http/accounts-service/p/http/issues.demo.mesh/p/http/issues-backend
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: SIDECAR_STATUS
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.annotations['sidecar.istio.io/status']
+          ports:
+            - name: http
+              containerPort: 8000
+            - name: tcp
+              containerPort: 3000

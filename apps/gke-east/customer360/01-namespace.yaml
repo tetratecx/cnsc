@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: customer360
+  labels:
+    istio.io/rev: 1-6-0
+    # istio-injection: enabled

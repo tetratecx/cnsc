@@ -1,0 +1,27 @@
+# ---
+# apiVersion: install.tetrate.io/v1alpha1
+# kind: IngressGateway
+# metadata:
+#   name: customer360-gateway
+#   namespace: customer360
+# spec:
+#   revision: 1-6-0
+#   kubeSpec:
+#     service:
+#       type: LoadBalancer
+#       annotations:
+#         "external-dns.alpha.kubernetes.io/hostname": "customer360.gke-east.abz-1-6.cx.tetrate.info."
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: customer360-cert
+#   namespace: customer360
+# spec:
+#   secretName: cert
+#   issuerRef:
+#     name: letsencrypt-dns-cluster-issuer
+#     kind: ClusterIssuer
+#   dnsNames:
+#   - customer360.gke-east.abz-1-6.cx.tetrate.info
+  
