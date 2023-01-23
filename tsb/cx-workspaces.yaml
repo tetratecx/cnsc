@@ -4,18 +4,15 @@ metadata:
   description: Ticketing Dev Env
   displayName: Ticketing Dev Env
   name: ticketing-dev
-  organization: tetrate
-  resourceVersion: '"ShhKoo2HPUc="'
+  organization: cnsc 
   tenant: cx
 spec:
   description: Ticketing Dev Env
   displayName: Ticketing Dev Env
-  etag: '"ShhKoo2HPUc="'
-  fqn: organizations/tetrate/tenants/cx/workspaces/ticketing-dev
   isolationBoundary: demo
   namespaceSelector:
     names:
-    - gke-west/ticketing-dev
+    - aks-westus2/ticketing-dev
   privileged: false
 
 ---
@@ -25,18 +22,15 @@ metadata:
   description: Ticketing Prod Env
   displayName: Ticketing Prod Env
   name: ticketing-prod
-  organization: tetrate
-  resourceVersion: '"sCAh9LVOcHw="'
+  organization: cnsc 
   tenant: cx
 spec:
   description: Ticketing Prod Env
   displayName: Ticketing Prod Env
-  etag: '"sCAh9LVOcHw="'
-  fqn: organizations/tetrate/tenants/cx/workspaces/ticketing-prod
   isolationBoundary: demo
   namespaceSelector:
     names:
-    - gke-east/ticketing
-    - gke-west/ticketing
+    - eks-useast2/ticketing
+    - aks-westus2/ticketing
   privileged: false
 
