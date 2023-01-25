@@ -3,8 +3,7 @@ kind: WorkspaceSetting
 metadata:
   displayName: default-setting
   name: default-setting
-  organization: tetrate
-  resourceVersion: '"FCPkp7l3424="'
+  organization: cnsc 
   tenant: cx
   workspace: ticketing-prod
 spec:
@@ -21,6 +20,5 @@ spec:
         perTryTimeout: 0.200s
         retryOn: 5xx,gateway-error,retriable-status-codes
   displayName: default-setting
-  etag: '"FCPkp7l3424="'
-  fqn: organizations/tetrate/tenants/cx/workspaces/ticketing-prod/settings/default-setting
+  fqn: organizations/cnsc/tenants/cx/workspaces/ticketing-prod/settings/default-setting
 
