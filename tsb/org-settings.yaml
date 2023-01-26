@@ -2,15 +2,13 @@ apiVersion: api.tsb.tetrate.io/v2
 kind: OrganizationSetting
 metadata:
   displayName: tetrate-settings
-  name: tetrate-settings
-  organization: tetrate
-  resourceVersion: '"KxV4nl43+0M="'
+  name: cnsc-settings
+  organization: cnsc 
 spec:
   defaultSecuritySetting:
     authenticationSettings:
       trafficMode: REQUIRED
-  displayName: tetrate-settings
-  etag: '"KxV4nl43+0M="'
+  displayName: cnsc-settings
   fqn: organizations/tetrate/settings/tetrate-settings
   networkSettings: {}
 

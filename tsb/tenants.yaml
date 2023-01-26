@@ -4,13 +4,10 @@ metadata:
   description: Consumer Banking
   displayName: Consumer Banking
   name: ccb
-  organization: tetrate
-  resourceVersion: '"v8f1g71WkjU="'
+  organization: cnsc 
 spec:
   description: Consumer Banking
   displayName: Consumer Banking
-  etag: '"v8f1g71WkjU="'
-  fqn: organizations/tetrate/tenants/ccb
 
 ---
 apiVersion: api.tsb.tetrate.io/v2
@@ -19,13 +16,10 @@ metadata:
   description: Customer Experience
   displayName: Customer Experience
   name: cx
-  organization: tetrate
-  resourceVersion: '"CIGqMw5xcj0="'
+  organization: cnsc
 spec:
   description: Customer Experience
   displayName: Customer Experience
-  etag: '"CIGqMw5xcj0="'
-  fqn: organizations/tetrate/tenants/cx
 
 ---
 apiVersion: api.tsb.tetrate.io/v2
@@ -34,13 +28,10 @@ metadata:
   description: Wealth Management
   displayName: Wealth Management
   name: wealth
-  organization: tetrate
-  resourceVersion: '"h3UQ0RxZHUs="'
+  organization: cnsc
 spec:
   description: Wealth Management
   displayName: Wealth Management
-  etag: '"h3UQ0RxZHUs="'
-  fqn: organizations/tetrate/tenants/wealth
 
 ---
 apiVersion: api.tsb.tetrate.io/v2
@@ -49,11 +40,8 @@ metadata:
   description: Cloud Infra
   displayName: Cloud Infra
   name: cloud
-  organization: tetrate
-  resourceVersion: '"IcEABLg5K14="'
+  organization: cnsc
 spec:
   description: Cloud Infra
   displayName: Cloud Infra
-  etag: '"IcEABLg5K14="'
-  fqn: organizations/tetrate/tenants/cloud
 

@@ -3,8 +3,7 @@ kind: TenantSetting
 metadata:
   displayName: default-setting
   name: default-tenant-setting
-  organization: tetrate
-  resourceVersion: '"6SiWXwwaSM0="'
+  organization: cnsc 
   tenant: cx
 spec:
   defaultSecuritySetting:
@@ -23,6 +22,4 @@ spec:
         perTryTimeout: 2s
         retryOn: 5xx,retriable-status-codes,gateway-error,reset
   displayName: default-setting
-  etag: '"6SiWXwwaSM0="'
-  fqn: organizations/tetrate/tenants/cx/settings/default-tenant-setting
 

@@ -2,19 +2,19 @@ apiVersion: rbac.tsb.tetrate.io/v2
 kind: TenantAccessBindings
 metadata:
   name: cx
-  organization: tetrate
+  organization: cnsc
   tenant: cx
 spec:
   allow:
   - role: rbac/security-arch
     subjects:
-    - team: organizations/tetrate/teams/19607bfd-caf1-41c8-b34f-82ee128811b9
+    - team: organizations/cnsc/teams/19607bfd-caf1-41c8-b34f-82ee128811b9
   - role: rbac/admin
     subjects:
     - serviceAccount: admin
   - role: rbac/tenant-reader
     subjects:
-    - team: organizations/tetrate/teams/2d0ccfbc-f1ef-4aeb-bdc4-e0cfee754bd1
-    - team: organizations/tetrate/teams/19607bfd-caf1-41c8-b34f-82ee128811b9
-    - user: organizations/tetrate/users/ffdae67c-c0b7-474d-a6fd-2acf5ecbb439
+    - team: organizations/cnsc/teams/2d0ccfbc-f1ef-4aeb-bdc4-e0cfee754bd1
+    - team: organizations/cnsc/teams/19607bfd-caf1-41c8-b34f-82ee128811b9
+    - user: organizations/cnsc/users/ffdae67c-c0b7-474d-a6fd-2acf5ecbb439
 
