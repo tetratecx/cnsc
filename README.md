@@ -11,6 +11,10 @@ Demo &amp; Artifacts for Cloud Native Security Con
 
 ## Setup
 
+### Provisioning Kubernetes Clusters and Installing TSB
+
+* This was done using [Tetrate Cloud](https://github.com/tetrateio/tetrate/blob/master/cloud/PROVISIONING.md) using [this](https://github.com/tetrateio/tetrate/blob/50aecdb41e69743c317f640c47fe7d301d2dc4ff/cloud/libraries/tsb/configuration.ts#L61) definition.
+
 ### Creating the apps in each cluster
 
 * Set the `KUBECONFIG` environment variable to the `aks-westus2` cluster
